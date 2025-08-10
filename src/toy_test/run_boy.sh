@@ -1,0 +1,11 @@
+python ../edit.py  --source_prompt "A young boy is sitting on a lush green lawn in front of a suburban house. A bright red toy airplane stands on the grass nearby, facing forward but angled slightly to the right. Its surface is smooth and glossy, with subtle highlights that reflect the sunny sky. The boy is wearing overalls and a plaid shirt, and he has a joyful expression on his face. The background features a clear blue sky with fluffy white clouds, and the house behind him has a beige exterior with a garage door. The scene is bright and sunny, creating a cheerful and playful atmosphere." \
+                --target_prompt "A round soccer ball rests on a lush green lawn in front of a suburban house. A bright red toy airplane stands on the grass nearby, facing forward but angled slightly to the right. Its surface is smooth and glossy, with subtle highlights that reflect the sunny sky. The ball is black and white with a classic pentagon pattern, its surface slightly worn from use but still clean and shiny under the sunlight. The background features a clear blue sky with fluffy white clouds, and the house behind it has a beige exterior with a garage door. The scene is bright and sunny, creating a cheerful and playful atmosphere." \
+                --guidance 2 \
+                --source_img_dir '../examples/source/boy.png' \
+                --num_steps 15 --offload \
+                --front 1 \
+                --inject 3 \
+                --name 'flux-dev'  \
+                --output_dir '../examples/edit-result/boy' \
+                --controlnet_type 'multi' \
+                --vis_path '../examples/edit-map-visualization/boy'
