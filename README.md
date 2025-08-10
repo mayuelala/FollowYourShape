@@ -1,6 +1,6 @@
 <div align="center">
   
-# 🖼️ Image Editing Using FLUX
+# Follow-Your-Shape: Shape-Aware Image Editing via Trajectory-Guided Region Control
 
 </div>
 
@@ -10,14 +10,17 @@
 # 🛠️ Code Setup
 The environment of our code is the same as FLUX, you can refer to the [official repo](https://github.com/black-forest-labs/flux/tree/main) of FLUX, or running the following command to construct the environment.
 ```
-conda create --n EditAnyShape python=3.10
-conda activate EditAnyShape
+conda create --n FollowYourShape python=3.10
+conda activate FollowYourShape
 pip install -e ".[all]"
 ```
-# 🚀 Examples for Image Editing
-We have provided several scripts to reproduce the results in the paper, mainly including 3 types of editing: Stylization, Adding, Replacing. We suggest to run the experiment on a single A100 GPU.
 
-## Stylization
+We recommend you to run the experiment on a single A100 GPU.
+
+<!-- # 🚀 Test
+We have provided several scripts to reproduce the results in the paper, mainly including 3 types of editing: Stylization, Adding, Replacing. We suggest to run the experiment on a single A100 GPU. -->
+
+<!-- ## Stylization
 <table class="center">
 <tr>
   <td width=10% align="center">Ref Style</td>
@@ -73,37 +76,35 @@ We have provided several scripts to reproduce the results in the paper, mainly i
   <td width=30% align="center"><img src="../assets/repo_figures/examples/edit/boy.jpg" raw=true></td>
 </tr>
 
-</table>
+</table> -->
 
 
 # 🪄 Edit Your Own Image
 
-## Gradio Demo
-We provide the gradio demo for image editing, which is also available on our 🤗 [Huggingface Space](https://huggingface.co/spaces/wjs0725/RF-Solver-Edit)! You can also run the gradio demo on your own device using the following command: 
-```
-cd src
-python gradio_demo.py
-```
-Here is an example of using the gradio demo to edit an image! Note that here "Number of inject steps" means the steps of feature sharing in RF-Edit, which is highly related to the quality of edited results. We suggest tuning this parameter, and selecting the results with the best visual quality.
-<div style="text-align: center;">
-  <img src="../assets/repo_figures/Picture7.jpg" style="width:100%; display: block; margin: 0 auto;" />
-</div>
+## Toy tests
+Gradio demo for image editing will be released soon. 
+
+For now, we provide several toy test examples in `src/toy_test`.
+You can either run the provided bash script directly or create your own custom bash scripts.
 
 
 ## Command Line
-You can also run the following scripts to edit your own image. 
+You can also run the following scripts in the terminal to edit your own image. 
 ```
 cd src
-python edit.py  --source_prompt [describe the content of your image or leave it as null] \
-                --target_prompt [describe your editing requirements] \
+python edit.py  --source_prompt [your source image prompt] \
+                --target_prompt [your editing prompt] \
                 --guidance 2 \
                 --source_img_dir [the path of your source image] \
-                --num_steps 30  \
-                --inject [typically set to a number between 2 to 8] \
+                --num_steps 15 --offload  \
+                --front [typically set to 1 or 2] \
+                --inject [typically set to 3 or 4] \
                 --name 'flux-dev' --offload \
-                --output_dir [output path] 
+                --output_dir [output path] \
+                --controlnet_type [specify your controlnet type] \
 ```
-Similarly, The ```--inject``` refers to the steps of feature sharing in RF-Edit, which is highly related to the performance of editing. 
+
+Please refer to the paper for the rationale and recommended values of the hyperparameters.
 
 
 
@@ -111,12 +112,12 @@ Similarly, The ```--inject``` refers to the steps of feature sharing in RF-Edit,
 
 If you find our work helpful, please **star 🌟** this repo and **cite 📑** our paper. Thanks for your support!
 
-```
+<!-- ```
 @article{wang2024taming,
   title={Taming Rectified Flow for Inversion and Editing},
   author={Wang, Jiangshan and Pu, Junfu and Qi, Zhongang and Guo, Jiayi and Ma, Yue and Huang, Nisha and Chen, Yuxin and Li, Xiu and Shan, Ying},
   journal={arXiv preprint arXiv:2411.04746},
   year={2024}
 }
-```
+``` -->
 
