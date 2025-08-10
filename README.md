@@ -5,6 +5,33 @@
 </div>
 
 
+<p>
+We propose <b>Follow-Your-Shape</b>, a training-free and mask-free framework that supports precise and controllable editing of object shapes while strictly preserving non-target content. Our method achieves superior editability and visual fidelity, particularly in tasks requiring large-scale shape replacement.
+</p>
+
+
+
+<p align="center">
+<img src="resources/teaser.jpg" width="1080px"/>
+</p>
+
+# 🔥 News
+<!-- - [2025.3.12] Thanks to @[smthemex](https://github.com/smthemex) for integrating KV-Edit into [ComfyUI](https://github.com/smthemex/ComfyUI_KV_Edit)!
+- [2025.3.4] We update "attention scale" feature to reduce the discontinuity with the background.
+- [2025.2.26] Our paper is featured in [huggingface Papers](https://huggingface.co/papers/2502.17363)! -->
+- [2025.2.25] Code released!
+- [2025.8.11] Paper released!
+<!-- - [2025.2.25] More results can be found in our [project page](https://xilluill.github.io/projectpages/KV-Edit/)! -->
+
+<!-- # 👨‍💻 ToDo
+- ☑️ Release the gradio demo
+- ☑️ Release the huggingface space for image editing
+- ☑️ Release the paper -->
+
+
+# 📖 Pipeline
+<p>
+<img src="resources/pipeline.jpg" width="1080px"/>
 
 
 # 🛠️ Code Setup
