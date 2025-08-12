@@ -8,7 +8,7 @@
 
 
 <a href='https://follow-your-shape.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
-[![arXiv](https://img.shields.io/badge/arXiv-2502.17363-b31b1b.svg)](https://github.com/mayuelala/FollowYourShape)
+[![arXiv](https://img.shields.io/badge/arXiv-2508.08134-b31b1b.svg)](https://arxiv.org/abs/2508.08134)
 [![Huggingface space](https://img.shields.io/badge/🤗-Huggingface%20Space-orange.svg)](https://github.com/mayuelala/FollowYourShape) 
 [![GitHub Stars](https://img.shields.io/github/stars/mayuelala/FollowYourShape)](https://github.com/mayuelala/FollowYourShape)
 
