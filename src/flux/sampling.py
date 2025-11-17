@@ -16,6 +16,8 @@ from tqdm import tqdm
 from scipy.signal import convolve2d
 from scipy.ndimage import gaussian_filter
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def prepare(t5: HFEmbedder, clip: HFEmbedder, img: Tensor, prompt: str | list[str]) -> dict[str, Tensor]:
@@ -378,7 +380,24 @@ def denoise_with_TDM(
             soft_mask = (delta_stack * softmax_weights).sum(dim=0)  # [H, W]
             soft_np = soft_mask.to(torch.float32).cpu().numpy()  # [H_patch, W_patch]
             smoothed_np = gaussian_filter(soft_np, sigma=0.7)
-            threshold = 0.33
+
+            from skimage.filters import threshold_otsu
+
+            threshold = threshold_otsu(smoothed_np)
+            # print("Otsu threshold:", threshold)
+            # values = smoothed_np.flatten()
+            # plt.figure(figsize=(6,4))
+            # sns.histplot(values, bins=50, kde=True, color="lightblue", stat="count", alpha=0.6)
+            # plt.axvline(threshold, color="red", linestyle="--", linewidth=1, label=f"Otsu τ = {threshold:.2f}")
+            # plt.xlim(0, 1)
+            # plt.xlabel("Value")
+            # plt.ylabel("Density")
+            # plt.legend()
+            # plt.title("Smoothed values distribution")
+            # plt.savefig("smoothed_dist.png", dpi=300, bbox_inches="tight")
+            # import pdb; pdb.set_trace()
+
+
             smoothed_binary_np = (smoothed_np > threshold).astype(np.uint8)
             binary_map = torch.tensor(smoothed_binary_np, device=delta_stack.device, dtype=torch.float32)
 
@@ -398,14 +417,6 @@ def denoise_with_TDM(
                 plt.close()
                 print("Saved edit map visualization to edit_map.png")
 
-
-            # plt.figure(figsize=(6, 5))
-            # plt.imshow(binary_map.to(torch.float32).cpu().numpy(), cmap='viridis')
-            # plt.colorbar()
-            # plt.title("Edit Map")
-            # plt.savefig("edit_map.png")
-            # plt.close()
-            # print("Saved edit map visualization to edit_map.png")
 
 
 

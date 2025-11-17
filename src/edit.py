@@ -293,7 +293,6 @@ def main(
         x, _ = denoise_with_TDM(model, **inp_target, timesteps=timesteps, guidance=guidance, inverse=False, info=info, width=opts.width, height=opts.height, inject_list=inject_list, tail_pad=1, front_pad=args.front,
                                        controlnet=controlnet, control_patch=control_patch, controlnet_scale=controlnet_scale, controlnet_mode=control_mode, guidance_start=guidance_start, guidance_end=guidance_end)       
 
-        # x, _ = denoise(model, **inp_target, timesteps=timesteps, guidance=guidance, inverse=False, info=info, inject_list=inject_list) 
         
         if offload:
             model.cpu()
